@@ -1,0 +1,61 @@
+﻿@{
+
+}
+
+@model JobScope.ViewModels.RegisterModel
+
+<div class="container">
+    <br />
+    <h4> User Registration </h4>
+    <br />
+    <form method="post" asp-action="CreateUser" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Last Name">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">School ID</label>
+            <input asp-for="SchoolId" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Enter School ID#">
+            <span asp-validation-for="SchoolId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2"> Email </label>
+            <input asp-for="Email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for=" formGroupExampleInput2"> Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Register</button>
+
+            @if (ViewBag.Error != null)
+            {
+                <br />
+                <span class="text-danger"> @ViewBag.Error</span>
+            }
+
+        </div>
+    </form>
+</div>
+
+@section Scripts{@{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
