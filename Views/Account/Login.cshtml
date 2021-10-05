@@ -1,0 +1,33 @@
+﻿@{
+}
+@model JobScope.ViewModels.LoginModel
+<div class="container">
+    <h4> Login </h4>
+    <form method="post" asp-action="LoginUser" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2"> Email </label>
+            <input asp-for="Email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+            </div>
+        </div>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success"> Login </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts{@{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
