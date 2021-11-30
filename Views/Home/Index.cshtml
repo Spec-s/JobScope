@@ -2,8 +2,66 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<body>
+   
+    <div  class="bg">
+        <div class="text-box">
+             <h1>JobScope</h1>
+             <br />
+             
+             <div class="typewriter">
+                <h3>“. . . Because people are our most precious assets,</h3>
+                <div class="typewriter-text">
+                <h3> we only let the best managers in the world lead them” </h3>
+                </div>
+              </div>
+
+             <div class="row"> 
+                <a href="registration.html">Join Us</a>
+                <a href="login.html">Log In</a>
+            </div>
+
+        </div>
+    </div>
+ 
+   @* <div class="text-box">
+        <h1>JobScope</h1>
+
+        <div class="typewriter">
+             <h3>“. . . Because people are our most precious assets,</h3>
+            <div class="typewriter-text">
+                <h3> we only let the best managers in the world lead them”
+                </h3>
+            </div>
+            
+        </div>
+        
+        <div class="row"> 
+            <a href="registration.html">Join Us</a>
+            <a href="login.html">Log In</a>
+        </div>
+       
+        
+    </div>*@
+    
+</body>
+
+@*<div class="text-center">
     <h1 class="display-4">Welcome To JobScope</h1>
     <p> where Dreams becomes a reality by adding a little time and effort.</p>
     <p>This is Group 3 web application</p>
-</div>
+</div>*@
+@section Scripts
+{
+    <link rel="stylesheet" type="text/css" href="~/css/JobScopeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('#dataTable').DataTable();
+    });
+
+    </script>
+
+}
