@@ -127,3 +127,19 @@ h4{
 label{
     font-weight: bold;
 }
+
+footer{
+    background-color: black;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.nav-link{
+    color: goldenrod;
+}
