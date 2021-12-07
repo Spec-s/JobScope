@@ -1,7 +1,53 @@
 ﻿@{
 }
 @model JobScope.ViewModels.LoginModel
-<div class="container">
+<body>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="bg-login">
+
+        </div>
+      </div>
+      
+      <div class="col-sm-4">
+      
+        <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+          @*<h1 style="font-size: 90px; line-height: 60px;">JobScope</h1>*@
+          <img src="~/Img/JobScope.png" width="200" height="200"/>
+          <br>
+          <h2> <center>Log In!</center></h2>
+          <form method="post" asp-action="LoginUser" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2"> Email </label>
+            <input asp-for="Email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+            </div>
+        </div>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success"> Login </button>
+        </div>
+    </form>
+        </div>
+      </div>
+    </div>
+    
+</body>
+
+@*<div class="container">
     <h4> Login </h4>
     <form method="post" asp-action="LoginUser" asp-controller="Account">
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -28,6 +74,20 @@
             <button type="submit" class="btn btn-success"> Login </button>
         </div>
     </form>
-</div>
+</div>*@
 
-@section Scripts{@{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link rel="stylesheet" type="text/css" href="~/css/JobScopeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('#dataTable').DataTable();
+    });
+
+    </script>
+
+
+}
