@@ -21,6 +21,8 @@ namespace JobScope.Controllers
 
         private string GenerateNumber()
         {
+            /* random number used with a string to make a unique Identification */
+
             const string chars = "0123456789";
             int length = 8;
             var random = new Random();
@@ -31,6 +33,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> ViewJobs()
         {
+            /* this displays the list results for the jibs in the database */
+
             var listofJobs = await _context.Jobs.ToListAsync();
             var jobs = listofJobs.Select(x => new JobListModel
             {
@@ -54,11 +58,15 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> AddJobs(JobsModel model)
         {
+            /* used for adding jobs to the database */
+
             var getCurrentUser = await _context.ApplicationUsers.FirstOrDefaultAsync(x => x.Email == User.Identity.Name);
 
             string jobidno = DateTime.Now.ToString("yyMMdd") + GenerateNumber();
 
-            var newJobs = new Jobs
+            var newJobs = new Jobs();
+            newJobs.Location = model.Location;
+                /*
             {
                 Location = model.Location,
                 Department = model.Department,
@@ -67,7 +75,7 @@ namespace JobScope.Controllers
                 JobDescription = model.JobDescription,
                 Updated = DateTime.Now,
                 CreatedById = getCurrentUser.Id
-            };
+            }; */
             _context.Jobs.Add(newJobs);
             var result = await _context.SaveChangesAsync();
             if (result > 0) return RedirectToAction("ViewJobs", "Jobs");
@@ -83,6 +91,8 @@ namespace JobScope.Controllers
       
         public async Task<IActionResult> DeleteJobAsync(Guid Id)
         {
+            /* used for deletion of a job */
+
             var Foundjob = await _context.Jobs.FirstOrDefaultAsync(x =>x.Id == Id);
             if (Foundjob == null) return RedirectToAction("ViewJobs", "Jobs");
             _context.Jobs.Remove(Foundjob);
@@ -91,10 +101,13 @@ namespace JobScope.Controllers
             return RedirectToAction("CreateJobs", "Jobs");
         }
 
+
         [Authorize(Roles = ("Admin"))]
         [HttpGet]
         public async Task<IActionResult> EditJob(Guid id)
         {
+            /* this function is specific to the admins only, this is used to find the specific job in the database and edit it*/
+
             var job = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
             return View("EditJob", job);
         }
@@ -102,6 +115,8 @@ namespace JobScope.Controllers
         [HttpPost]
         public async Task<IActionResult> EditJobAsync(Jobs model)
         {
+            /* after the jobs has been successfully editted this function will rewrite the changes and save it to the database */
+
             var editjob = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == model.Id);
             if(editjob != null) return RedirectToAction("ViewJobs", new { id = editjob.Id });
             _context.Jobs.Add(editjob);

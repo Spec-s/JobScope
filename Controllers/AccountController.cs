@@ -27,6 +27,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> Logout()
         {
+            /* this function is used to log out the user once they have been fully registered and signed in successfully */
+
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
@@ -44,6 +46,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> LoginUser(LoginModel model)
         {
+            /* this function is used to login the user after registration */
+
             try
             {
 
@@ -73,6 +77,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> CreateUser(RegisterModel registerModel)
         {
+            /* this function is used to create a new user in the database */
+
             try
             {
                 var user = new ApplicationUser
@@ -104,6 +110,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> Profile(string id)
         {
+            /* this code is to display the current user profile */
+
             var CurrentUser = await _context.ApplicationUsers.FindAsync(id);
             if(CurrentUser == null)
             {
@@ -115,12 +123,16 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> EditProfile(string id)
         {
+            /* this is used to edit the current user profile and update with new records */
+
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
             return View("EditProfile", user);
         }
 
         public async Task<IActionResult> JobApplied(Guid id)
         {
+            /* this finds the job which the user applied for */
+
             var job = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
             return View("ViewJobs", job);
         }

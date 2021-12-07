@@ -18,7 +18,7 @@ namespace JobScope.Models
 
         public DateTime Updated { get; set; }
 
-        public String Department { get; set; }
+        public string Department { get; set; }
 
         public string JobDescription { get; set; }
 

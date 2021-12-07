@@ -79,6 +79,8 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public IActionResult ListRoles()
         {
+            /* provide a list of all the roles in the database */
+
             var roles = _roleManager.Roles;
             return View(roles);
         }
@@ -87,6 +89,8 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> EditRole(string id)
         {
+            /* used for editing of any role which was added to the database */
+
             var role = await _roleManager.FindByIdAsync(id);
 
             if (role == null)
@@ -113,6 +117,8 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
+            /* this method is called when the changes need to made after the roles has been editted */
+
             var role = await _roleManager.FindByIdAsync(model.Id);
 
             if (role == null)
@@ -142,6 +148,8 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
+            /* used to edit the users in the specicifc role */
+
             ViewBag.roleId = roleId;
 
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -180,6 +188,8 @@ namespace JobScope.Controllers
         [Authorize(Roles = ("Admin"))]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string roleId)
         {
+            /* after the users have been editted this function is used to save and update the new changes made */
+
             var role = await _roleManager.FindByIdAsync(roleId);
 
             if (role == null)
@@ -218,18 +228,24 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> ManageUsers()
         {
+            /* used by the admin to manage all users in the database */
+
             var allUsers = await _userManager.Users.ToListAsync();
             return View("ManageUsers", allUsers);
         }
 
         public async Task<IActionResult> EditUser(string id)
         {
+            /* used to make edition to a user profile */
+
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
             return View("EditUser", user);
         }
 
         public async Task<IActionResult> UpdateUser(ApplicationUser model)
         {
+            /* after the edit is successful this method save and update the changes made */
+
             var founduser = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
             if (founduser == null) return RedirectToAction("EditUser", new { id = model.Id });
             founduser.FirstName = model.FirstName;
@@ -241,6 +257,8 @@ namespace JobScope.Controllers
 
         public async Task<IActionResult> DeleteUser(string id)
         {
+            /* used to delete a specific user from the database */
+
             var founduser = await _context.ApplicationUsers.FirstOrDefaultAsync(x=> x.Id == id);
             _context.ApplicationUsers.Remove(founduser);
             await _context.SaveChangesAsync();
