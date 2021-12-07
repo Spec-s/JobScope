@@ -3,10 +3,10 @@
 }
 @model List<JobScope.ViewModels.JobListModel>
 
+
 <div class="container-fluid">
     <br />
-
-    <h4> All Jobss </h4>
+    <h4> All Jobs </h4>
     <br />
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -52,6 +52,7 @@
                                                 <i class="fas fa-trash-alt fa-lg"></i>
                                             </a>
                                         }
+                                        
                                     </td>
                                 </tr>
                             }
@@ -65,6 +66,7 @@
 
 @section Scripts
 {
+    <link rel="stylesheet" type="text/css" href="~/css/JobScopeStyle.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
     </script>

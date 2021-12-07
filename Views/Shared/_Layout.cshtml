@@ -21,7 +21,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">JobScope</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -44,11 +44,11 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Jobs" asp-action="AddJobs">Create Job</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ManageUsers">View Users</a>
-                            </li>
-                            <li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListRoles">User Roles</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ManageUers"> View Users</a>
                             </li>
                         }
                     </ul>
@@ -82,10 +82,10 @@
                 </div>
             </div>
         </nav>
-        <img src="~/Img/telephone-g44e513660_1920.jpg" />
+        @*<img src="~/Img/telephone-g44e513660_1920.jpg" />*@
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid" style="padding-left:0; padding-right: 0;">
+        <main role="main">
             @RenderBody()
         </main>
     </div>

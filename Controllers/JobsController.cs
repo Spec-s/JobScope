@@ -57,6 +57,7 @@ namespace JobScope.Controllers
             var getCurrentUser = await _context.ApplicationUsers.FirstOrDefaultAsync(x => x.Email == User.Identity.Name);
 
             string jobidno = DateTime.Now.ToString("yyMMdd") + GenerateNumber();
+
             var newJobs = new Jobs
             {
                 Location = model.Location,
@@ -73,14 +74,13 @@ namespace JobScope.Controllers
             return RedirectToAction("CreateJobs", "Jobs");
         }
 
-        [Authorize(Roles = ("Admin"))]
+       /* [Authorize(Roles = ("Admin"))]
         private List<JobListModel> AddJobs()
         {
             throw new NotImplementedException();
         }
-
-
-        [Authorize(Roles = ("Admin"))]
+       */
+      
         public async Task<IActionResult> DeleteJobAsync(Guid Id)
         {
             var Foundjob = await _context.Jobs.FirstOrDefaultAsync(x =>x.Id == Id);
@@ -93,20 +93,23 @@ namespace JobScope.Controllers
 
         [Authorize(Roles = ("Admin"))]
         [HttpGet]
-        public async Task<IActionResult> EditJobAsync(string id)
+        public async Task<IActionResult> EditJob(Guid id)
         {
-            var editjob = await _context.Jobs.FirstOrDefaultAsync(x => x.JobId == id);
-            if(editjob == null)
-            {
-                return NotFound();
-            }
-
-            return View(editjob);
+            var job = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
+            return View("EditJob", job);
         }
 
-        public async Task<IActionResult> SelectJob()
+        [HttpPost]
+        public async Task<IActionResult> EditJobAsync(Jobs model)
         {
-            return View();
+            var editjob = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if(editjob != null) return RedirectToAction("ViewJobs", new { id = editjob.Id });
+            _context.Jobs.Add(editjob);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("ViewJobs", "Jobs");
+            
         }
+        
+
     }
 }

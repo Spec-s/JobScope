@@ -102,6 +102,27 @@ namespace JobScope.Controllers
 
         }
 
-      
+        public async Task<IActionResult> Profile(string id)
+        {
+            var CurrentUser = await _context.ApplicationUsers.FindAsync(id);
+            if(CurrentUser == null)
+            {
+                return NotFound();
+            }
+            return View("Profile");
+            
+        }
+
+        public async Task<IActionResult> EditProfile(string id)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            return View("EditProfile", user);
+        }
+
+        public async Task<IActionResult> JobApplied(Guid id)
+        {
+            var job = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
+            return View("ViewJobs", job);
+        }
     }
 }

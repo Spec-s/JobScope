@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace JobScope.Controllers
 {
-
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -245,6 +245,13 @@ namespace JobScope.Controllers
             _context.ApplicationUsers.Remove(founduser);
             await _context.SaveChangesAsync();
             return RedirectToAction("ManageUsers", "Admin");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

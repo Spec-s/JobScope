@@ -1,0 +1,39 @@
+﻿@model List<JobScope.Models.ApplicationUser>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <br />
+
+    <h4>User Profile </h4>
+    <br />
+    <div class="card-deck">
+        @foreach (var User in Model ){
+        <div class="card m-3">
+            <div class="card-header">
+                <h3>@User.FirstName, @User.LastName</h3>
+            </div>
+            <img class="card-img-top" src="~/Img/default-user.png" />
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('#dataTable').DataTable();
+    });
+
+    </script>
+
+}
