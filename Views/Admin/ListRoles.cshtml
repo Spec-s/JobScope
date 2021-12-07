@@ -5,19 +5,26 @@
 
 
 }
-<h1>All Roles</h1>
+
+<div class="container" style="padding: 20px;">
+
+<h1><center>All Roles</center></h1>
+
 
 @if (Model.Any())
 {
-    <a class="btn btn-primary" style="width:auto"
+     <div class="container" style="padding: 20px;">
+    <a class="btn btn-info" style="width:auto;"
        asp-controller="Admin" asp-action="CreateRole">
         Add new role
     </a>
+   
+   </div>
 
     foreach (var role in Model)
     {
-        <div class="card mb-3">
-            <div class="card-header">
+        <div class="card mb-3 ">
+            <div class="card-header ">
                 Role Id: @role.Id
             </div>
 
@@ -26,10 +33,10 @@
             </div>
 
             <div class="card-footer">
-                <a class="btn btn-primary" 
+                <a class="btn btn-success" 
                    asp-controller="Admin" asp-action="EditRole" 
                    asp-route-id="@role.Id">Edit</a>
-                <a class="btn btn-primary">Delete</a>
+                <a class="btn btn-danger" style="color: white;">Delete</a>
             </div>
         </div>
     }
@@ -51,3 +58,4 @@ else
         </div>
     </div>
 }
+</div>
