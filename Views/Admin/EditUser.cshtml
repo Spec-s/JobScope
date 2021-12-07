@@ -3,7 +3,11 @@
 }
 
 @model JobScope.Models.ApplicationUser
-<div class="container-fluid">
+
+<div class="container">
+    <br />
+    <h1>Edit Users Information</h1>
+    <br />
     <form asp-action="UpdateUser" asp-controller="Admin" method="post">
         @Html.HiddenFor(x => x.Id)
         <div class="form-group">

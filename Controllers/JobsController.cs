@@ -66,6 +66,12 @@ namespace JobScope.Controllers
 
             var newJobs = new Jobs();
             newJobs.Location = model.Location;
+            newJobs.Department = model.Department;
+            newJobs.JobPosition = model.JobPosition;
+            newJobs.JobId = Guid.NewGuid().ToString();
+            newJobs.JobDescription = model.JobDescription;
+            newJobs.Updated = DateTime.Now;
+            newJobs.CreatedById = getCurrentUser.Id;
                 /*
             {
                 Location = model.Location,
@@ -78,7 +84,7 @@ namespace JobScope.Controllers
             }; */
             _context.Jobs.Add(newJobs);
             var result = await _context.SaveChangesAsync();
-            if (result > 0) return RedirectToAction("ViewJobs", "Jobs");
+            
             return RedirectToAction("CreateJobs", "Jobs");
         }
 

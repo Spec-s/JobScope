@@ -117,7 +117,7 @@ namespace JobScope.Controllers
             {
                 return NotFound();
             }
-            return View("Profile");
+            return RedirectToAction("Profile", "Account");
             
         }
 
