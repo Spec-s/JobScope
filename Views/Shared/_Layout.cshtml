@@ -42,21 +42,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Jobs" asp-action="ViewJobs">Jobs Available</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
+                        </li>
+
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Jobs" asp-action="AddJobs">Create Job</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Admin" asp-action="ListRoles">User Roles</a>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Admin" asp-action="ManageUers"> View Users</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Admin" asp-action="ManageUsers"> View Users</a>
                             </li>
                         }
                     </ul>
 
-                    <!-- below is to hide and show the user when login/ logout.... Not Working!!!-->
+                    
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
                             @if (singInManager.IsSignedIn(User))

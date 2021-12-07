@@ -64,7 +64,9 @@ namespace JobScope.Controllers
 
             string jobidno = DateTime.Now.ToString("yyMMdd") + GenerateNumber();
 
-            var newJobs = new Jobs
+            var newJobs = new Jobs();
+            newJobs.Location = model.Location;
+                /*
             {
                 Location = model.Location,
                 Department = model.Department,
@@ -73,7 +75,7 @@ namespace JobScope.Controllers
                 JobDescription = model.JobDescription,
                 Updated = DateTime.Now,
                 CreatedById = getCurrentUser.Id
-            };
+            }; */
             _context.Jobs.Add(newJobs);
             var result = await _context.SaveChangesAsync();
             if (result > 0) return RedirectToAction("ViewJobs", "Jobs");
