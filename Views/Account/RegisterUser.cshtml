@@ -4,10 +4,75 @@
 
 @model JobScope.ViewModels.RegisterModel
 
-<div class="container">
+<div class="bg-dark text-light">
+    <br>
+   <div class="container bg-img" style="padding: 20px;">
+        <h1> <center>Register Here!</center> </h1>
+        <div class="card form-reg" style="width: 50rem; display: block;margin-left: auto;
+        margin-right: auto;">
+            <div class="card-body" >
+                <h5 class="card-title">Please provide all necessary information.</h5>
+               <form method="post" asp-action="CreateUser" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Last Name">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">School ID</label>
+            <input asp-for="SchoolId" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Enter School ID#">
+            <span asp-validation-for="SchoolId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2"> Email </label>
+            <input asp-for="Email" type="email" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for=" formGroupExampleInput2"> Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Register</button>
+
+            @if (ViewBag.Error != null)
+            {
+                <br />
+                <span class="text-danger"> @ViewBag.Error</span>
+            }
+
+        </div>
+    </form>
+        </div>
+   </div>
+    
+</div>
+<br />
+</div>
+
+@*<body class="">
+    <div class="container">
+    <div class="bg-light text-dark">
+    <h1><center> User Registration</center> </h1>
     <br />
-    <h4> User Registration </h4>
-    <br />
+  
     <form method="post" asp-action="CreateUser" asp-controller="Account">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
@@ -56,6 +121,23 @@
 
         </div>
     </form>
+    <div></div>
 </div>
 
-@section Scripts{@{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
+</body>*@
+
+
+
+@section Scripts{@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <link rel="stylesheet" type="text/css" href="~/css/JobScopeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('#dataTable').DataTable();
+    });
+
+    </script>
+}

@@ -1,6 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<body class="bg-light text-dark">
+    <br />
+    <div class="container">
+        <h1>JobScope Privacy Policy</h1>
+        <p>This Privacy Policy was last modified on November 30,2021.</p>
 
-<p>Use this page to detail your site's privacy policy.</p>
+        <p>
+            My company, JobSCope operates <a href="">http://www.JobScope.com</a>. This page informs you of our policies regarding the collection,  <br /> use and disclosure of Personal Information we recieve from users of Jobscope.
+        </p>
+        <p>
+            We use your Personal Information only for providing and improving JobScope. By using JobScope, you agree to the collection and use of information in accordance with this policy.
+
+        </p>
+        <p>
+            <b>Information Collection and Use</b> <br />
+            While using our site, we may ask you to provide us with certain personal identifiable information that can be used to contact or identify you. Personal Identifiable informationmay include, but is not limited to your name ("Personal Information").
+        </p>
+        <p>
+            <b>Log Data</b> <br />
+            Like many site operators, we collect information that your browser sends whenever you visit our site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our site that you visit, the time and date of your visit, the time spent on those pages and other statistics.
+        </p>
+    </div>
+
+    
+
+</body>
+
+@*<h1>@ViewData["Title"]</h1>
+*@
+@*<p>Use this page to detail your site's privacy policy.</p>*@
+
+
+@section Scripts
+{
+    <link rel="stylesheet" type="text/css" href="~/css/JobScopeStyle.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('#dataTable').DataTable();
+    });
+
+    </script>
+
+}
