@@ -13,6 +13,7 @@ namespace JobScope.Controllers
     public class JobsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private string CreatedById;
 
         public JobsController(ApplicationDbContext context)
         {
@@ -71,7 +72,7 @@ namespace JobScope.Controllers
             newJobs.JobId = Guid.NewGuid().ToString();
             newJobs.JobDescription = model.JobDescription;
             newJobs.Updated = DateTime.Now;
-            newJobs.CreatedById = getCurrentUser.Id;
+            //CreatedById = getCurrentUser.Id;
                 /*
             {
                 Location = model.Location,

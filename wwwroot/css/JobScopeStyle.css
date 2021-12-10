@@ -3,6 +3,8 @@
    padding: 0;
    font-family: sans-serif;
 }
+@media screen and (min-width: 320px) {
+    
 
 .bg {
     width: 100%;
@@ -33,7 +35,7 @@ img {
 
 h2{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: red;
+    color: forestgreen;
 }
 
 h1 {
@@ -69,18 +71,7 @@ h1 {
    margin-left: 40px;
 }
 
-.text-box h1{
-    font-size: 190px;
-    line-height: 160px;
-    margin-left: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: transparent;
-    -webkit-text-stroke: 1px #fff;
-    background: url(../Img/back.png);
-    -webkit-background-clip: text;
-    background-position: 0 0;
-    animation: back 20s linear infinite;
-}
+
 
 @keyframes back{
     100%{
@@ -88,32 +79,9 @@ h1 {
     }
 }
 
-.text-box h3{
-    /* font-size: 40px;
-    font-weight: 100; */
-    padding-left: 40px;
-    /* margin-left: 40px;
-    margin-right: 40px; */
-}
 
-.typewriter{
-    font-family: Courier, monospace;
-	display: inline-block;
-}
 
-.typewriter-text {
-    display: inline-block;
-  	overflow: hidden;
-  	letter-spacing: 2px;
- 	animation: typing 5s steps(30, end), blink .75s step-end infinite;
-    white-space: nowrap;
-    font-size: 30px;
-    font-weight: 700;
-    border-right: 4px solid rgb(60, 255, 0);
-    box-sizing: border-box;
 
-    
-}
 
 /* .wrap{
     overflow-wrap: break-word;
@@ -174,3 +142,54 @@ footer{
 .nav-link{
     color: goldenrod;
 }
+}
+
+@media screen and (min-width: 960px) {
+    .text-box h1 {
+        font-size: 190px;
+        line-height: 160px;
+        margin-left: 40px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: transparent;
+        -webkit-text-stroke: 1px #fff;
+        background: url(../Img/back.png);
+        -webkit-background-clip: text;
+        background-position: 0 0;
+        animation: back 20s linear infinite;
+    }
+    .text-box h3 {
+         font-size: 40px;
+        font-weight: 100; 
+        padding-left: 40px;
+        /* margin-left: 40px;
+    margin-right: 40px; */
+    }
+    .typewriter {
+        font-family: Courier, monospace;
+        display: inline-block;
+    }
+
+    .typewriter-text {
+        display: inline-block;
+        overflow: hidden;
+        letter-spacing: 2px;
+        animation: typing 5s steps(30, end), blink .75s step-end infinite;
+        white-space: nowrap;
+        font-size: 30px;
+        font-weight: 700;
+        border-right: 4px solid rgb(60, 255, 0);
+        box-sizing: border-box;
+    }
+}
+
+/*@media screen and (min-width: 320px) {
+    h1 {
+        font-size: 12px;
+    }
+
+    h3 {
+        font-size: 12px;
+    }
+}
+
+*/
